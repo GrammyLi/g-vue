@@ -1,0 +1,57 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-11-07 17:36:39
+ * @LastEditTime: 2021-12-16 12:32:00
+ * @LastEditors: your name
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /g-vue/index.html
+-->
+<!DOCTYPE html>
+<html lang="cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>g-vue</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>差值表达式</h1>
+      <h3>{{ msg }}</h3>
+      <h3>{{ count }}</h3>
+      <h1>v-text</h1>
+      <div v-text="msg"></div>
+      下面是对于 v-html 的测试
+      <div v-html="renderHtml"></div>
+      <div v-on:click="showText">click me for testing v-on directive</div>
+      <h1>v-model</h1>
+      <input type="text" v-model="msg" />
+      <input type="text" v-model="count" />
+    </div>
+    <script src="./js/dep.js"></script>
+    <script src="./js/watcher.js"></script>
+    <script src="./js/compiler.js"></script>
+    <script src="./js/observer.js"></script>
+    <script src="./js/vue.js"></script>
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          msg: "hello g-vue",
+          count: 100,
+          person: { name: "grammyli" },
+          renderHtml: "<h2>v-html directive</h2>",
+        },
+        methods: {
+          //  hack method, not proxy
+          showText() {
+            alert("暂时不支持传参");
+          },
+        },
+      });
+      console.log(vm.msg);
+      // vm.msg = { test: 'Hello' }
+      vm.test = "abc";
+    </script>
+  </body>
+</html>
